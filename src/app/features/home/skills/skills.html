@@ -1,0 +1,145 @@
+<section
+  id="skills"
+  appScrollReveal
+  class="border-t border-zinc-900 py-24 sm:py-32"
+>
+  <div class="container">
+
+    <div
+      class="flex flex-col justify-between gap-6
+             md:flex-row md:items-end"
+    >
+
+      <div>
+
+        <p
+          class="text-xs font-medium uppercase
+                 tracking-[0.3em] text-zinc-400"
+        >
+          02 — Stack
+        </p>
+
+        <h2
+          class="mt-4 text-3xl font-semibold
+                 tracking-tight text-white
+                 sm:text-4xl"
+        >
+          Tecnologias
+          <span class="text-zinc-400">
+            que utilizo.
+          </span>
+        </h2>
+
+      </div>
+
+      <p
+        class="max-w-md text-sm leading-relaxed
+               text-zinc-500"
+      >
+        Uma stack construída ao longo de
+        diferentes projetos, contextos e
+        desafios de engenharia.
+      </p>
+
+    </div>
+
+
+    <div
+      class="mt-16 grid gap-4
+             md:grid-cols-2
+             lg:grid-cols-3"
+    >
+
+      @for (group of skillGroups; track group.title) {
+
+        <article
+          class="group rounded-2xl
+                 border border-zinc-800
+                 bg-zinc-950
+                 p-6
+                 transition-all
+                 duration-300
+                 hover:-translate-y-1
+                 hover:border-zinc-700
+                 hover:bg-zinc-900/60"
+        >
+
+          <div
+            class="flex items-center
+                   justify-between"
+          >
+
+            <span
+              class="flex h-9 w-9
+                     items-center justify-center
+                     rounded-lg
+                     border border-zinc-800
+                     bg-zinc-900
+                     text-xs font-mono
+                     text-zinc-500"
+            >
+              {{ ($index + 1).toString().padStart(2, '0') }}
+            </span>
+
+            <span
+              class="text-xs uppercase
+                     tracking-wider
+                     text-zinc-700"
+            >
+              {{ group.title }}
+            </span>
+
+          </div>
+
+
+          <h3
+            class="mt-8 text-lg font-semibold
+                   text-white"
+          >
+            {{ group.title }}
+          </h3>
+
+          <p
+            class="mt-2 text-sm
+                   leading-relaxed
+                   text-zinc-500"
+          >
+            {{ group.description }}
+          </p>
+
+
+          <div
+            class="mt-6 flex flex-wrap gap-2"
+          >
+
+            @for (
+              technology of group.technologies;
+              track technology
+            ) {
+
+              <span
+                class="rounded-md
+                       border border-zinc-800
+                       bg-zinc-900
+                       px-2.5 py-1.5
+                       text-xs
+                       text-zinc-400
+                       transition
+                       group-hover:border-zinc-700
+                       group-hover:text-zinc-300"
+              >
+                {{ technology }}
+              </span>
+
+            }
+
+          </div>
+
+        </article>
+
+      }
+
+    </div>
+
+  </div>
+</section>
