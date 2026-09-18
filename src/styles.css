@@ -1,1 +1,409 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+:root {
+  --background: #080b12;
+
+  --surface: #0f141d;
+  --surface-hover: #151c28;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #b8c1cf;
+  --text-muted: #7c8799;
+
+  --border: #202a3a;
+  --border-hover: #34445d;
+
+  --accent: #5b8cff;
+  --accent-hover: #78a3ff;
+  --accent-dark: #315fce;
+
+  --success: #34d399;
+
+  --shadow-accent: 0 0 40px rgba(91, 140, 255, 0.12);
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+
+  --transition-fast: 150ms ease;
+  --transition-normal: 250ms ease;
+  --transition-slow: 500ms ease;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+
+  background:
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(91, 140, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(56, 189, 248, 0.04),
+      transparent 24%
+    ),
+    var(--background);
+
+  color: var(--text-primary);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-inline: 20px;
+  }
+}
+
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--accent);
+  color: #ffffff;
+
+  padding: 0.75rem 1.25rem;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus-visible {
+  top: 1rem;
+}
+
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border: 1px solid var(--accent);
+  border-radius: 9999px;
+
+  background: var(--accent);
+  color: #ffffff;
+
+  padding: 0.75rem 1.5rem;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  box-shadow:
+    0 8px 24px rgba(91, 140, 255, 0.18);
+
+  transition:
+    transform var(--transition-normal),
+    background var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(91, 140, 255, 0.28);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  border: 1px solid var(--border-hover);
+  border-radius: 9999px;
+
+  background: rgba(15, 20, 29, 0.8);
+  color: var(--text-primary);
+
+  padding: 0.75rem 1.5rem;
+
+  font-size: 0.875rem;
+  font-weight: 600;
+
+  transition:
+    transform var(--transition-normal),
+    background var(--transition-normal),
+    border-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+.btn-secondary:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  color: var(--accent-hover);
+
+  transform: translateY(-2px);
+}
+
+
+.surface-card {
+  border: 1px solid var(--border);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(21, 28, 40, 0.72),
+      rgba(15, 20, 29, 0.92)
+    );
+
+  border-radius: var(--radius-xl);
+
+  transition:
+    transform var(--transition-normal),
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    background var(--transition-normal);
+}
+
+.surface-card:hover {
+  transform: translateY(-4px);
+
+  border-color: var(--border-hover);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.22);
+}
+
+.accent-card:hover {
+  border-color: rgba(91, 140, 255, 0.45);
+
+  box-shadow:
+    var(--shadow-accent);
+}
+
+
+.badge-accent {
+  display: inline-flex;
+  align-items: center;
+
+  border: 1px solid rgba(91, 140, 255, 0.28);
+  border-radius: 9999px;
+
+  background: rgba(91, 140, 255, 0.08);
+  color: var(--accent-hover);
+
+  padding: 0.375rem 0.75rem;
+
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.badge-accent:hover {
+  background: rgba(91, 140, 255, 0.14);
+  border-color: rgba(91, 140, 255, 0.42);
+}
+
+
+.nav-link {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+
+  transition:
+    color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+}
+
+.nav-link.active {
+  color: var(--accent-hover);
+}
+
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.hero-glow {
+  animation:
+    hero-glow 7s ease-in-out infinite;
+}
+
+.hero-card {
+  animation:
+    hero-float 6s ease-in-out infinite;
+}
+
+.hero-enter {
+  animation:
+    hero-enter
+    800ms
+    cubic-bezier(0.22, 1, 0.36, 1)
+    both;
+}
+
+.hero-enter-delay-1 {
+  animation-delay: 100ms;
+}
+
+.hero-enter-delay-2 {
+  animation-delay: 200ms;
+}
+
+.hero-enter-delay-3 {
+  animation-delay: 300ms;
+}
+
+.hero-enter-delay-4 {
+  animation-delay: 400ms;
+}
+
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes hero-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+
+.status-dot {
+  animation:
+    status-pulse
+    2.5s
+    ease-in-out
+    infinite;
+}
+
+@keyframes status-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(52, 211, 153, 0);
+  }
+
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(52, 211, 153, 0.08);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

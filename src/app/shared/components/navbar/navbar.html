@@ -1,0 +1,353 @@
+<header class="fixed inset-x-0 top-0 z-50">
+
+  <nav class="container py-5">
+
+    <div
+      class="rounded-2xl
+             border border-slate-800/80
+             bg-[#080b12]/85
+             shadow-lg shadow-black/20
+             backdrop-blur-xl"
+    >
+
+      <div
+        class="flex items-center
+               justify-between
+               px-5 py-3"
+      >
+
+        <a
+          href="/"
+          (click)="onBrandClick($event)"
+          class="group flex items-center gap-3"
+          aria-label="Pedro Lustosa - início"
+        >
+
+          <img
+            src="/logo-pedrolustosa.png"
+            alt="Pedro Lustosa"
+            class="h-9 w-9
+                   object-contain
+                   transition-transform
+                   duration-200
+                   group-hover:scale-105"
+          />
+
+          <span
+            class="hidden text-sm
+                   font-medium
+                   text-slate-300
+                   transition-colors
+                   duration-200
+                   group-hover:text-white
+                   sm:block"
+          >
+            Pedro Lustosa
+          </span>
+
+        </a>
+
+
+        <div
+          class="hidden items-center
+                 gap-6 lg:flex"
+        >
+
+          <a
+            href="#home"
+            class="nav-link"
+            [class.active]="activeSection() === 'home'"
+            [attr.aria-current]="
+              activeSection() === 'home'
+                ? 'page'
+                : null
+            "
+          >
+            Início
+          </a>
+
+
+          <a
+            href="#about"
+            class="nav-link"
+            [class.active]="activeSection() === 'about'"
+            [attr.aria-current]="
+              activeSection() === 'about'
+                ? 'page'
+                : null
+            "
+          >
+            Sobre
+          </a>
+
+
+          <a
+            href="#skills"
+            class="nav-link"
+            [class.active]="activeSection() === 'skills'"
+            [attr.aria-current]="
+              activeSection() === 'skills'
+                ? 'page'
+                : null
+            "
+          >
+            Skills
+          </a>
+
+
+          <a
+            href="#projects"
+            class="nav-link"
+            [class.active]="activeSection() === 'projects'"
+            [attr.aria-current]="
+              activeSection() === 'projects'
+                ? 'page'
+                : null
+            "
+          >
+            Projetos
+          </a>
+
+
+          <a
+            href="#experience"
+            class="nav-link"
+            [class.active]="activeSection() === 'experience'"
+            [attr.aria-current]="
+              activeSection() === 'experience'
+                ? 'page'
+                : null
+            "
+          >
+            Experiência
+          </a>
+
+
+          <a
+            href="#journey"
+            class="nav-link"
+            [class.active]="activeSection() === 'journey'"
+            [attr.aria-current]="
+              activeSection() === 'journey'
+                ? 'page'
+                : null
+            "
+          >
+            Jornada
+          </a>
+
+
+          <a
+            href="#education"
+            class="nav-link"
+            [class.active]="activeSection() === 'education'"
+            [attr.aria-current]="
+              activeSection() === 'education'
+                ? 'page'
+                : null
+            "
+          >
+            Formação
+          </a>
+
+
+          <a
+            href="#certifications"
+            class="nav-link"
+            [class.active]="activeSection() === 'certifications'"
+            [attr.aria-current]="
+              activeSection() === 'certifications'
+                ? 'page'
+                : null
+            "
+          >
+            Certificações
+          </a>
+
+        </div>
+
+
+        <a
+          href="#contact"
+          class="hidden rounded-full
+                 border border-blue-400/40
+                 bg-blue-500/10
+                 px-4 py-2
+                 text-sm font-medium
+                 text-blue-200
+                 transition-all
+                 duration-200
+                 hover:-translate-y-0.5
+                 hover:border-blue-400
+                 hover:bg-blue-500
+                 hover:text-white
+                 lg:block"
+          [class.ring-1]="activeSection() === 'contact'"
+          [class.ring-blue-400]="activeSection() === 'contact'"
+        >
+          Vamos conversar
+        </a>
+
+
+        <button
+          type="button"
+          (click)="toggleMenu()"
+          class="flex h-9 w-9
+                 items-center justify-center
+                 rounded-full
+                 border border-slate-700
+                 bg-slate-900/80
+                 text-slate-300
+                 transition-all
+                 duration-200
+                 hover:border-blue-400/60
+                 hover:text-blue-300
+                 lg:hidden"
+          [attr.aria-expanded]="isMenuOpen()"
+          aria-controls="mobile-navigation"
+          [attr.aria-label]="
+            isMenuOpen()
+              ? 'Fechar menu'
+              : 'Abrir menu'
+          "
+        >
+
+          @if (isMenuOpen()) {
+
+            <span
+              class="text-xl leading-none"
+              aria-hidden="true"
+            >
+              ×
+            </span>
+
+          } @else {
+
+            <span
+              class="text-lg leading-none"
+              aria-hidden="true"
+            >
+              ☰
+            </span>
+
+          }
+
+        </button>
+
+      </div>
+
+
+      @if (isMenuOpen()) {
+
+        <div
+          id="mobile-navigation"
+          class="border-t border-slate-800
+                 px-5 py-4
+                 lg:hidden"
+        >
+
+          <div class="flex flex-col">
+
+            <a
+              href="#home"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'home'"
+            >
+              Início
+            </a>
+
+            <a
+              href="#about"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'about'"
+            >
+              Sobre
+            </a>
+
+            <a
+              href="#skills"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'skills'"
+            >
+              Skills
+            </a>
+
+            <a
+              href="#projects"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'projects'"
+            >
+              Projetos
+            </a>
+
+            <a
+              href="#experience"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'experience'"
+            >
+              Experiência
+            </a>
+
+            <a
+              href="#journey"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'journey'"
+            >
+              Jornada
+            </a>
+
+            <a
+              href="#education"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'education'"
+            >
+              Formação
+            </a>
+
+            <a
+              href="#certifications"
+              (click)="closeMenu()"
+              class="mobile-nav-link"
+              [class.active]="activeSection() === 'certifications'"
+            >
+              Certificações
+            </a>
+
+            <a
+              href="#contact"
+              (click)="closeMenu()"
+              class="mt-3
+                     rounded-xl
+                     border border-blue-400/30
+                     bg-blue-500/10
+                     px-4 py-3
+                     text-center
+                     text-sm font-semibold
+                     text-blue-200
+                     transition-all
+                     duration-200
+                     hover:border-blue-400
+                     hover:bg-blue-500
+                     hover:text-white"
+            >
+              Vamos conversar
+            </a>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </nav>
+
+</header>

@@ -1,0 +1,354 @@
+<section
+  id="home"
+  class="relative min-h-screen overflow-hidden"
+>
+
+  <div
+    class="pointer-events-none absolute inset-0
+           bg-[radial-gradient(circle_at_70%_30%,rgba(91,140,255,0.10),transparent_32%)]"
+  ></div>
+
+  <div
+    class="hero-glow pointer-events-none
+           absolute right-[8%] top-[20%]
+           h-72 w-72 rounded-full
+           bg-blue-500/10
+           blur-3xl"
+  ></div>
+
+  <div
+    class="pointer-events-none absolute
+           inset-x-0 bottom-0
+           h-40
+           bg-gradient-to-t
+           from-[#080b12]
+           to-transparent"
+  ></div>
+
+
+
+  <div
+    class="container relative
+           flex min-h-screen
+           items-center
+           pt-24"
+  >
+
+    <div
+      class="grid w-full
+             items-center
+             gap-16
+             lg:grid-cols-[1.1fr_0.9fr]"
+    >
+
+
+      <div>
+
+        <div
+          class="hero-enter
+                 mb-8
+                 inline-flex
+                 items-center
+                 gap-2
+                 rounded-full
+                 border border-emerald-400/20
+                 bg-emerald-400/5
+                 px-3 py-1.5"
+        >
+
+          <span
+            class="status-dot
+                   h-2 w-2
+                   rounded-full
+                   bg-emerald-400"
+          ></span>
+
+          <span
+            class="text-xs
+                   font-medium
+                   text-emerald-300"
+          >
+            Disponível para novos projetos
+          </span>
+
+        </div>
+
+
+        <p
+          class="hero-enter
+                 hero-enter-delay-1
+                 mb-4
+                 text-sm
+                 font-medium
+                 uppercase
+                 tracking-[0.3em]
+                 text-blue-400"
+        >
+          Software Engineer
+        </p>
+
+
+        <h1
+          class="hero-enter
+                 hero-enter-delay-2
+                 max-w-4xl
+                 text-6xl
+                 font-bold
+                 leading-[0.95]
+                 tracking-tight
+                 text-white
+                 sm:text-7xl
+                 lg:text-8xl"
+        >
+          Pedro
+
+          <span
+            class="bg-gradient-to-r
+                   from-white
+                   via-blue-200
+                   to-blue-400
+                   bg-clip-text
+                   text-transparent"
+          >
+            Lustosa.
+          </span>
+        </h1>
+
+
+        <p
+          class="hero-enter
+                 hero-enter-delay-3
+                 mt-8
+                 max-w-2xl
+                 text-lg
+                 leading-relaxed
+                 text-slate-400
+                 sm:text-xl"
+        >
+          Desenvolvedor de software especializado
+          na construção de aplicações escaláveis,
+          performáticas e orientadas a boas práticas
+          de engenharia.
+        </p>
+
+
+        <div
+          class="hero-enter
+                 hero-enter-delay-3
+                 mt-8
+                 flex
+                 flex-wrap
+                 gap-2"
+        >
+
+          @for (
+            technology of technologies;
+            track technology
+          ) {
+
+            <span
+              class="rounded-full
+                     border border-slate-700
+                     bg-slate-900/70
+                     px-3 py-1.5
+                     text-xs
+                     font-medium
+                     text-slate-300
+                     transition-all
+                     duration-200
+                     hover:border-blue-400/50
+                     hover:bg-blue-500/10
+                     hover:text-blue-200"
+            >
+              {{ technology }}
+            </span>
+
+          }
+
+        </div>
+
+
+        <div
+          class="hero-enter
+                 hero-enter-delay-4
+                 mt-10
+                 flex
+                 flex-wrap
+                 gap-4"
+        >
+
+          <a
+            href="#projects"
+            class="btn-primary"
+          >
+            Ver projetos
+
+            <span aria-hidden="true">
+              →
+            </span>
+          </a>
+
+
+          <a
+            href="#contact"
+            class="btn-secondary"
+          >
+            Entrar em contato
+          </a>
+
+        </div>
+
+      </div>
+
+
+
+      <div class="mt-16 lg:mt-0">
+
+        <div
+          class="hero-card
+                 relative
+                 mx-auto
+                 max-w-md"
+        >
+
+          <div
+            class="hero-glow
+                   pointer-events-none
+                   absolute
+                   inset-0
+                   rounded-3xl
+                   bg-blue-500/10
+                   blur-3xl"
+          ></div>
+
+
+          <div
+            class="surface-card
+                   accent-card
+                   relative
+                   overflow-hidden
+                   p-2"
+          >
+
+            <div
+              class="relative
+                     overflow-hidden
+                     rounded-2xl
+                     border
+                     border-slate-800"
+            >
+
+              <img
+                src="/profile.png"
+                alt="Pedro Lustosa"
+                class="h-[360px]
+                       w-full
+                       object-cover
+                       object-top
+                       transition-transform
+                       duration-700
+                       hover:scale-105
+                       sm:h-[440px]
+                       lg:h-[520px]"
+              />
+
+
+              <div
+                class="pointer-events-none
+                       absolute
+                       inset-0
+                       bg-gradient-to-t
+                       from-[#080b12]/80
+                       via-transparent
+                       to-transparent"
+              ></div>
+
+
+              <div
+                class="absolute
+                       bottom-0
+                       left-0
+                       right-0
+                       p-6"
+              >
+
+                <p
+                  class="text-lg
+                         font-semibold
+                         text-white"
+                >
+                  Pedro Lustosa
+                </p>
+
+                <p
+                  class="mt-1
+                         text-xs
+                         uppercase
+                         tracking-[0.25em]
+                         text-blue-300"
+                >
+                  Software Engineer
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div
+            class="mt-5
+                   text-center"
+          >
+
+            <p
+              class="text-xs
+                     text-slate-500"
+            >
+              Full Stack · Architecture · Cloud
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <div
+    class="absolute
+           bottom-8
+           left-1/2
+           hidden
+           -translate-x-1/2
+           flex-col
+           items-center
+           gap-3
+           md:flex"
+  >
+
+    <span
+      class="text-[10px]
+             uppercase
+             tracking-[0.3em]
+             text-slate-600"
+    >
+      Scroll
+    </span>
+
+    <div
+      class="h-8 w-px
+             bg-gradient-to-b
+             from-blue-400/50
+             to-transparent"
+    ></div>
+
+  </div>
+
+</section>
