@@ -167,7 +167,7 @@
 
           <button
             type="button"
-            class="theme-toggle"
+            class="theme-toggle inline-flex"
             (click)="toggleTheme()"
             [attr.aria-label]="
               themeService.theme() === 'dark'
@@ -199,7 +199,7 @@
                    hover:border-blue-400
                    hover:bg-blue-500
                    hover:text-white
-                   lg:block"
+                   lg:inline-flex"
             [class.ring-1]="activeSection() === 'contact'"
             [class.ring-blue-400]="activeSection() === 'contact'"
           >
@@ -210,7 +210,8 @@
           <button
             type="button"
             (click)="toggleMenu()"
-            class="theme-toggle lg:hidden"
+            class="theme-toggle menu-toggle inline-flex lg:hidden"
+            [class.is-open]="isMenuOpen()"
             [attr.aria-expanded]="isMenuOpen()"
             aria-controls="mobile-navigation"
             [attr.aria-label]="
@@ -219,27 +220,24 @@
                 : 'Abrir menu'
             "
           >
-
-            @if (isMenuOpen()) {
-
-              <span
-                class="text-xl leading-none"
-                aria-hidden="true"
-              >
-                ×
-              </span>
-
-            } @else {
-
-              <span
-                class="text-lg leading-none"
-                aria-hidden="true"
-              >
-                ☰
-              </span>
-
-            }
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+              class="menu-toggle__icon"
+            >
+              <path class="menu-toggle__bar menu-toggle__bar--1" d="M4 7h16" />
+              <path class="menu-toggle__bar menu-toggle__bar--2" d="M4 12h16" />
+              <path class="menu-toggle__bar menu-toggle__bar--3" d="M4 17h16" />
+              <path class="menu-toggle__x menu-toggle__x--1" d="M15 9l5 6" pathLength="10" />
+              <path class="menu-toggle__x menu-toggle__x--2" d="M20 9l-5 6" pathLength="10" />
+            </svg>
           </button>
 
         </div>

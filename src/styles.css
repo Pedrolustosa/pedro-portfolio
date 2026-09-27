@@ -333,13 +333,13 @@ section[id] {
 }
 
 .theme-toggle {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
 
   width: 2.25rem;
   height: 2.25rem;
   padding: 0;
+  margin: 0;
 
   border: 1px solid var(--border);
   border-radius: 9999px;
@@ -347,6 +347,8 @@ section[id] {
   background: var(--surface);
   color: var(--text-secondary);
 
+  line-height: 0;
+  appearance: none;
   cursor: pointer;
 
   transition:
@@ -354,6 +356,16 @@ section[id] {
     border-color var(--transition-fast),
     color var(--transition-fast),
     transform var(--transition-fast);
+}
+
+.theme-toggle app-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  line-height: 0;
+  pointer-events: none;
 }
 
 .theme-toggle:hover {
