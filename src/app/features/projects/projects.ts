@@ -5,10 +5,12 @@ import { PROJECTS } from '../../core/data/projects.data';
 import { PROJECT_CASES } from '../../core/data/project-cases.data';
 import { ProjectCase } from '../../core/models/project-case.model';
 import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
+import { Carousel } from '../../shared/components/carousel/carousel';
+import { CarouselSlideDirective } from '../../shared/components/carousel/carousel-slide.directive';
 
 @Component({
   selector: 'app-projects',
-  imports: [RouterLink, ScrollRevealDirective],
+  imports: [RouterLink, ScrollRevealDirective, Carousel, CarouselSlideDirective],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })

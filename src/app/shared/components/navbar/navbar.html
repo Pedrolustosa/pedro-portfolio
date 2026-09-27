@@ -3,11 +3,7 @@
   <nav class="container py-5">
 
     <div
-      class="rounded-2xl
-             border border-slate-800/80
-             bg-[#080b12]/85
-             shadow-lg shadow-black/20
-             backdrop-blur-xl"
+      class="nav-shell rounded-2xl"
     >
 
       <div
@@ -167,72 +163,86 @@
         </div>
 
 
-        <a
-          href="#contact"
-          class="hidden rounded-full
-                 border border-blue-400/40
-                 bg-blue-500/10
-                 px-4 py-2
-                 text-sm font-medium
-                 text-blue-200
-                 transition-all
-                 duration-200
-                 hover:-translate-y-0.5
-                 hover:border-blue-400
-                 hover:bg-blue-500
-                 hover:text-white
-                 lg:block"
-          [class.ring-1]="activeSection() === 'contact'"
-          [class.ring-blue-400]="activeSection() === 'contact'"
-        >
-          Vamos conversar
-        </a>
+        <div class="flex items-center gap-2">
+
+          <button
+            type="button"
+            class="theme-toggle"
+            (click)="toggleTheme()"
+            [attr.aria-label]="
+              themeService.theme() === 'dark'
+                ? 'Ativar tema claro'
+                : 'Ativar tema escuro'
+            "
+            [attr.title]="
+              themeService.theme() === 'dark'
+                ? 'Tema claro'
+                : 'Tema escuro'
+            "
+          >
+            <app-icon
+              [name]="themeService.theme() === 'dark' ? 'sun' : 'moon'"
+            />
+          </button>
+
+          <a
+            href="#contact"
+            class="hidden rounded-full
+                   border border-blue-400/40
+                   bg-blue-500/10
+                   px-4 py-2
+                   text-sm font-medium
+                   text-blue-200
+                   transition-all
+                   duration-200
+                   hover:-translate-y-0.5
+                   hover:border-blue-400
+                   hover:bg-blue-500
+                   hover:text-white
+                   lg:block"
+            [class.ring-1]="activeSection() === 'contact'"
+            [class.ring-blue-400]="activeSection() === 'contact'"
+          >
+            Vamos conversar
+          </a>
 
 
-        <button
-          type="button"
-          (click)="toggleMenu()"
-          class="flex h-9 w-9
-                 items-center justify-center
-                 rounded-full
-                 border border-slate-700
-                 bg-slate-900/80
-                 text-slate-300
-                 transition-all
-                 duration-200
-                 hover:border-blue-400/60
-                 hover:text-blue-300
-                 lg:hidden"
-          [attr.aria-expanded]="isMenuOpen()"
-          aria-controls="mobile-navigation"
-          [attr.aria-label]="
-            isMenuOpen()
-              ? 'Fechar menu'
-              : 'Abrir menu'
-          "
-        >
+          <button
+            type="button"
+            (click)="toggleMenu()"
+            class="theme-toggle lg:hidden"
+            [attr.aria-expanded]="isMenuOpen()"
+            aria-controls="mobile-navigation"
+            [attr.aria-label]="
+              isMenuOpen()
+                ? 'Fechar menu'
+                : 'Abrir menu'
+            "
+          >
 
-          @if (isMenuOpen()) {
+            @if (isMenuOpen()) {
 
-            <span
-              class="text-xl leading-none"
-              aria-hidden="true"
-            >
-              ×
-            </span>
+              <span
+                class="text-xl leading-none"
+                aria-hidden="true"
+              >
+                ×
+              </span>
 
-          } @else {
+            } @else {
 
-            <span
-              class="text-lg leading-none"
-              aria-hidden="true"
-            >
-              ☰
-            </span>
+              <span
+                class="text-lg leading-none"
+                aria-hidden="true"
+              >
+                ☰
+              </span>
 
-          }
+            }
 
-        </button>
+          </button>
+
+        </div>
 
       </div>
 

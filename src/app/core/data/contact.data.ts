@@ -20,5 +20,12 @@ export const CONTACT_LINKS: ContactLink[] = [
     url: 'https://github.com/Pedrolustosa',
     icon: 'github',
     external: true
+  },
+  {
+    label: 'Currículo',
+    value: 'Baixar PDF',
+    url: '/Pedro-Lustosa-Curriculo.pdf',
+    icon: 'download',
+    download: true
   }
 ];

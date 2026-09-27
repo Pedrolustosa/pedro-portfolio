@@ -2,6 +2,7 @@ export interface ContactLink {
   label: string;
   value: string;
   url: string;
-  icon: 'email' | 'linkedin' | 'github';
+  icon: 'email' | 'linkedin' | 'github' | 'download';
   external?: boolean;
+  download?: boolean;
 }

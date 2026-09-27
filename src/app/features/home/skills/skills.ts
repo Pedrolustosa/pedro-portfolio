@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
+import { Carousel } from '../../../shared/components/carousel/carousel';
+import { CarouselSlideDirective } from '../../../shared/components/carousel/carousel-slide.directive';
 
 interface SkillGroup {
   title: string;
@@ -10,7 +12,7 @@ interface SkillGroup {
 
 @Component({
   selector: 'app-skills',
-  imports: [ScrollRevealDirective],
+  imports: [ScrollRevealDirective, Carousel, CarouselSlideDirective],
   templateUrl: './skills.html',
   styleUrl: './skills.css'
 })

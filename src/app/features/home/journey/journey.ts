@@ -49,9 +49,9 @@ export class Journey {
     },
     {
       year: '2025',
-      title: 'Cloud & AI',
+      title: 'IA Generativa',
       description:
-        'Atuação com cloud, AWS Bedrock e tecnologias modernas, acompanhada pela especialização acadêmica em Inteligência Artificial.'
+        'Aplicação de IA generativa em produtos e fluxos reais, com integrações às APIs modernas do momento — OpenAI, Anthropic Claude, Google Gemini, Azure OpenAI e AWS Bedrock — além de especialização acadêmica em Inteligência Artificial.'
     }
   ];
 

@@ -46,28 +46,35 @@
       <div class="relative">
 
         <div
-          class="absolute left-[7px] top-2
-                 bottom-2 w-px
-                 bg-zinc-800"
+          class="timeline-line
+                 pointer-events-none absolute left-[6px]
+                 top-12 bottom-12 w-px
+                 max-sm:hidden"
         ></div>
 
-
-        <div class="space-y-12">
-
+        <app-carousel
+          ariaLabel="Experiência profissional"
+          orientation="vertical"
+          autoplayDirection="forward"
+          [perView]="[1, 2, 2]"
+          [intervalMs]="8000"
+          [durationMs]="1000"
+          [gapPx]="14"
+        >
           @for (
             experience of experiences;
             track experience.company
           ) {
-
             <article
-              class="group relative pl-10"
+              appCarouselSlide
+              class="group relative overflow-hidden pl-8"
             >
 
               <div
-                class="absolute left-0 top-1.5
-                       h-[15px] w-[15px]
+                class="absolute left-0 top-2
+                       h-3 w-3
                        rounded-full
-                       border-4
+                       border-[3px]
                        border-zinc-950
                        bg-zinc-700
                        transition
@@ -76,93 +83,101 @@
 
 
               <div
-                class="flex flex-wrap
-                       items-center gap-x-3 gap-y-1"
+                class="flex h-full flex-col
+                       justify-center
+                       overflow-hidden
+                       rounded-xl
+                       border border-zinc-800
+                       bg-zinc-950/80
+                       px-4 py-3
+                       transition
+                       group-hover:border-zinc-700"
               >
 
-                <span
-                  class="text-xs font-medium
-                         uppercase
-                         tracking-wider
-                         text-zinc-400"
+                <div
+                  class="flex flex-wrap
+                         items-center gap-x-2 gap-y-0.5"
                 >
-                  {{ experience.start }}
-                </span>
-
-                <span
-                  class="text-zinc-800"
-                >
-                  —
-                </span>
-
-                <span
-                  class="text-xs font-medium
-                         uppercase
-                         tracking-wider
-                         text-zinc-400"
-                >
-                  {{ experience.end }}
-                </span>
-
-              </div>
-
-
-              <h3
-                class="mt-3 text-xl
-                       font-semibold
-                       text-white"
-              >
-                {{ experience.company }}
-              </h3>
-
-
-              <p
-                class="mt-1 text-sm
-                       font-medium
-                       text-zinc-400"
-              >
-                {{ experience.role }}
-              </p>
-
-
-              <p
-                class="mt-4 max-w-2xl
-                       text-sm leading-relaxed
-                       text-zinc-500"
-              >
-                {{ experience.description }}
-              </p>
-
-
-              <div
-                class="mt-5 flex flex-wrap gap-2"
-              >
-
-                @for (
-                  technology of experience.technologies;
-                  track technology
-                ) {
 
                   <span
-                    class="rounded-md
-                           border border-zinc-800
-                           bg-zinc-950
-                           px-2.5 py-1
-                           text-xs
+                    class="text-[10px] font-medium
+                           uppercase
+                           tracking-wider
                            text-zinc-500"
                   >
-                    {{ technology }}
+                    {{ experience.start }}
                   </span>
 
-                }
+                  <span class="text-zinc-800">—</span>
+
+                  <span
+                    class="text-[10px] font-medium
+                           uppercase
+                           tracking-wider
+                           text-zinc-500"
+                  >
+                    {{ experience.end }}
+                  </span>
+
+                </div>
+
+
+                <h3
+                  class="mt-1.5 text-base
+                         font-semibold
+                         leading-snug
+                         text-white"
+                >
+                  {{ experience.company }}
+                </h3>
+
+
+                <p
+                  class="mt-0.5 text-xs
+                         font-medium
+                         text-zinc-400"
+                >
+                  {{ experience.role }}
+                </p>
+
+
+                <p
+                  class="mt-2 line-clamp-2
+                         text-xs leading-relaxed
+                         text-zinc-500"
+                >
+                  {{ experience.description }}
+                </p>
+
+
+                <div
+                  class="mt-2.5 flex flex-wrap gap-1.5"
+                >
+
+                  @for (
+                    technology of experience.technologies;
+                    track technology
+                  ) {
+
+                    <span
+                      class="rounded border border-zinc-800
+                             bg-zinc-950
+                             px-2 py-0.5
+                             text-[10px]
+                             text-zinc-500"
+                    >
+                      {{ technology }}
+                    </span>
+
+                  }
+
+                </div>
 
               </div>
 
             </article>
-
           }
-
-        </div>
+        </app-carousel>
 
       </div>
 

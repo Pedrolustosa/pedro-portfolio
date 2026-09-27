@@ -56,13 +56,7 @@
         >
           Vamos construir algo
 
-          <span
-            class="bg-gradient-to-r
-                   from-blue-300
-                   to-blue-500
-                   bg-clip-text
-                   text-transparent"
-          >
+          <span class="brand-accent">
             juntos?
           </span>
         </h2>
@@ -106,6 +100,11 @@
               [rel]="
                 contact.external
                   ? 'noopener noreferrer'
+                  : null
+              "
+              [attr.download]="
+                contact.download
+                  ? 'Pedro-Lustosa-Curriculo.pdf'
                   : null
               "
               class="group flex
