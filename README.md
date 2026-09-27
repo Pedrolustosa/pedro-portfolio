@@ -1,62 +1,87 @@
 # Pedro Lustosa — Portfolio
 
-Personal portfolio of Pedro Lustosa, a Software Engineer specialized in full stack development, software architecture, cloud and scalable applications.
+Personal portfolio of Pedro Lustosa, a Software Engineer specialized in full stack development, software architecture, cloud, generative AI integrations and scalable applications.
 
 Built as a single-page Angular application with a dedicated route for detailed project case studies.
 
 ## Tech Stack
 
-- [Angular 20](https://angular.dev) (standalone components, signals)
+- [Angular 20](https://angular.dev) (standalone components, signals, zoneless change detection)
 - [Tailwind CSS 4](https://tailwindcss.com)
 - TypeScript
 - RxJS
 
 ## Features
 
-- **Home** — hero, about, skills, projects, experience, journey, education, certifications and contact sections
-- **Project case studies** — dedicated route (`/projects/:slug`) with problem, solution, architecture and technical decisions for each project
-- Scroll-reveal animations, active-section navigation highlighting and a responsive navbar/footer
-- Accessibility touches: skip link, `aria-current` on active nav links, WCAG-conscious color contrast
+- **Home** — hero, about, skills, projects, experience, journey, education, certifications and contact
+- **Featured project** — [IdentityHub](https://github.com/Pedrolustosa/IdentityHub) IAM case study at `/projects/identityhub`
+- **Carousels** — reusable autoplay + manual carousel on stack, projects, experience (vertical career timeline), education and certifications
+- **Light / dark theme** — toggle in the navbar, preference persisted in `localStorage`, respects system preference on first visit
+- **Certifications** — filterable cards with certificate images when available
+- **Hero focus** — primary stack highlighted with icons: C#, .NET, Angular, React, Python
+- Scroll-reveal animations, active-section navigation and responsive navbar/footer
+- Accessibility: skip link, `aria-current`, focus-visible styles, `prefers-reduced-motion`
 
 ## Project Structure
 
 ```
 src/app/
   core/
-    data/        # static content (experience, education, certifications, etc.)
-    models/      # TypeScript interfaces for the data above
+    data/        # static content (experience, education, certifications, projects, …)
+    models/      # TypeScript interfaces
+    services/    # theme service
   features/
-    home/        # home page sections (hero, about, skills, ...)
+    home/        # home page sections (hero, about, skills, …)
     projects/    # project list + case study page
   shared/
-    components/  # navbar, footer
+    components/  # navbar, footer, carousel
     directives/  # scroll-reveal directive
     icon/        # inline SVG icon component
+
+public/
+  certifications/   # certificate images used in the certifications carousel
 ```
 
-## Development server
+## Support
 
-To start a local development server, run:
+If this portfolio or the open-source work around it is useful to you, you can support it here:
+
+- [buymeacoffee.com/pedrolustosa](https://buymeacoffee.com/pedrolustosa)
+
+<p align="left">
+  <a href="https://buymeacoffee.com/pedrolustosa">
+    <img
+      src="public/buy-me-a-coffee-qr.png"
+      alt="Buy me a coffee QR code"
+      width="180"
+    />
+  </a>
+</p>
+
+## Content notes
+
+- Projects are defined in `src/app/core/data/projects.data.ts` and case studies in `project-cases.data.ts` (same `slug`).
+- Certification metadata and image paths live in `src/app/core/data/certifications.data.ts`.
+- Resume download points to `/Pedro-Lustosa-Curriculo.pdf` (place the PDF under `public/` when ready).
+- Buy Me a Coffee link and QR live in the footer (`public/buy-me-a-coffee-qr.png`).
+
+## Development server
 
 ```bash
 npm start
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open `http://localhost:4200/`. The app reloads on source changes.
 
 ## Building
-
-To build the project run:
 
 ```bash
 npm run build
 ```
 
-This will compile the project and store the build artifacts in the `dist/` directory.
+Artifacts are written to `dist/`.
 
 ## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
 
 ```bash
 npm test
@@ -64,5 +89,4 @@ npm test
 
 ## Additional Resources
 
-For more information on using the Angular CLI, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
+For more information on the Angular CLI, see the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli).
