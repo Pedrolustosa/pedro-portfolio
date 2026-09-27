@@ -12,9 +12,12 @@ import {
 
 import { filter } from 'rxjs';
 
+import { ThemeService } from '../../../core/services/theme.service';
+import { Icon } from '../../icon/icon';
+
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [Icon],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
@@ -24,6 +27,8 @@ export class Navbar {
   protected readonly activeSection = signal('home');
 
   private readonly router = inject(Router);
+
+  protected readonly themeService = inject(ThemeService);
 
   constructor() {
     this.setupRouterListener();
@@ -58,6 +63,10 @@ export class Navbar {
 
   protected closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  protected toggleTheme(): void {
+    this.themeService.toggle();
   }
 
   private setupRouterListener(): void {

@@ -55,186 +55,192 @@
                  leading-relaxed
                  text-slate-400"
         >
-          Projetos pessoais utilizados para experimentar
-          tecnologias, resolver problemas e aplicar
-          conceitos de engenharia de software.
+          Projeto em destaque no GitHub, usado para aplicar
+          arquitetura, segurança e conceitos de engenharia
+          de software em um produto real.
         </p>
 
       </div>
 
 
-      <div class="mt-16 space-y-4">
+      <div class="mt-16">
+        <app-carousel
+          ariaLabel="Projetos em destaque"
+          [perView]="[1, 1, 1]"
+          [intervalMs]="8000"
+          [durationMs]="950"
+        >
+          @for (
+            project of projects;
+            track project.slug
+          ) {
 
-        @for (
-          project of projects;
-          track project.slug
-        ) {
-
-          <article
-            class="surface-card
-                   accent-card
-                   group overflow-hidden"
-          >
-
-            <div
-              class="grid
-                     lg:grid-cols-[0.35fr_1fr_0.7fr]"
+            <article
+              appCarouselSlide
+              class="surface-card
+                     accent-card
+                     group overflow-hidden"
             >
 
               <div
-                class="hidden
-                       border-r border-slate-800
-                       p-8
-                       lg:block"
+                class="grid
+                       lg:grid-cols-[0.35fr_1fr_0.7fr]"
               >
 
-                <span
-                  class="font-mono
-                         text-sm
-                         text-slate-600"
-                >
-                  {{ ($index + 1).toString().padStart(2, '0') }}
-                </span>
-
-              </div>
-
-
-              <div class="p-8">
-
                 <div
-                  class="flex items-center gap-3"
+                  class="hidden
+                         border-r border-slate-800
+                         p-8
+                         lg:block"
                 >
 
                   <span
-                    class="text-xs
-                           uppercase
-                           tracking-wider
-                           text-blue-400/70"
+                    class="font-mono
+                           text-sm
+                           text-slate-600"
                   >
-                    {{ project.category }}
+                    {{ ($index + 1).toString().padStart(2, '0') }}
                   </span>
 
-
-                  @if (project.featured) {
-
-                    <span
-                      class="badge-accent
-                             !px-2
-                             !py-0.5
-                             !text-[10px]
-                             uppercase
-                             tracking-wider"
-                    >
-                      Featured
-                    </span>
-
-                  }
-
                 </div>
 
 
-                <h3
-                  class="mt-4
-                         text-2xl
-                         font-semibold
-                         text-white
-                         transition-colors
-                         duration-200
-                         group-hover:text-blue-200"
-                >
-                  {{ project.title }}
-                </h3>
+                <div class="p-8">
 
-
-                <p
-                  class="mt-4 max-w-xl
-                         text-sm
-                         leading-relaxed
-                         text-slate-400"
-                >
-                  {{ project.description }}
-                </p>
-
-
-                <div
-                  class="mt-6 flex
-                         flex-wrap gap-2"
-                >
-
-                  @for (
-                    technology of project.technologies;
-                    track technology
-                  ) {
-
-                    <span
-                      class="rounded-md
-                             border border-slate-700
-                             bg-slate-900/80
-                             px-2.5 py-1.5
-                             text-xs
-                             text-slate-300
-                             transition-colors
-                             duration-200
-                             group-hover:border-blue-400/20"
-                    >
-                      {{ technology }}
-                    </span>
-
-                  }
-
-                </div>
-
-              </div>
-
-
-              <div
-                class="flex items-end
-                       border-t
-                       border-slate-800
-                       p-8
-                       lg:border-l
-                       lg:border-t-0"
-              >
-
-                <div
-                  class="flex flex-wrap
-                         gap-3"
-                >
-
-                  <a
-                    [routerLink]="[
-                      '/projects',
-                      project.slug
-                    ]"
-                    class="btn-primary"
+                  <div
+                    class="flex items-center gap-3"
                   >
-                    Ver Case Study
-                  </a>
+
+                    <span
+                      class="text-xs
+                             uppercase
+                             tracking-wider
+                             text-blue-400/70"
+                    >
+                      {{ project.category }}
+                    </span>
 
 
-                  @if (project.githubUrl) {
+                    @if (project.featured) {
+
+                      <span
+                        class="badge-accent
+                               !px-2
+                               !py-0.5
+                               !text-[10px]
+                               uppercase
+                               tracking-wider"
+                      >
+                        Featured
+                      </span>
+
+                    }
+
+                  </div>
+
+
+                  <h3
+                    class="mt-4
+                           text-2xl
+                           font-semibold
+                           text-white
+                           transition-colors
+                           duration-200
+                           group-hover:text-blue-200"
+                  >
+                    {{ project.title }}
+                  </h3>
+
+
+                  <p
+                    class="mt-4 max-w-xl
+                           text-sm
+                           leading-relaxed
+                           text-slate-400"
+                  >
+                    {{ project.description }}
+                  </p>
+
+
+                  <div
+                    class="mt-6 flex
+                           flex-wrap gap-2"
+                  >
+
+                    @for (
+                      technology of project.technologies;
+                      track technology
+                    ) {
+
+                      <span
+                        class="rounded-md
+                               border border-slate-700
+                               bg-slate-900/80
+                               px-2.5 py-1.5
+                               text-xs
+                               text-slate-300
+                               transition-colors
+                               duration-200
+                               group-hover:border-blue-400/20"
+                      >
+                        {{ technology }}
+                      </span>
+
+                    }
+
+                  </div>
+
+                </div>
+
+
+                <div
+                  class="flex items-end
+                         border-t
+                         border-slate-800
+                         p-8
+                         lg:border-l
+                         lg:border-t-0"
+                >
+
+                  <div
+                    class="flex flex-wrap
+                           gap-3"
+                  >
 
                     <a
-                      [href]="project.githubUrl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="btn-secondary"
+                      [routerLink]="[
+                        '/projects',
+                        project.slug
+                      ]"
+                      class="btn-primary"
                     >
-                      GitHub
+                      Ver Case Study
                     </a>
 
-                  }
+
+                    @if (project.githubUrl) {
+
+                      <a
+                        [href]="project.githubUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-secondary"
+                      >
+                        GitHub
+                      </a>
+
+                    }
+
+                  </div>
 
                 </div>
 
               </div>
 
-            </div>
+            </article>
 
-          </article>
-
-        }
-
+          }
+        </app-carousel>
       </div>
 
     </div>

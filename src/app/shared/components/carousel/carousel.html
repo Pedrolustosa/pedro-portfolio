@@ -1,0 +1,61 @@
+<div
+  class="carousel"
+  [class.carousel--vertical]="isVertical()"
+  role="region"
+  [attr.aria-label]="ariaLabel()"
+  [attr.aria-roledescription]="'carousel'"
+  (mouseenter)="pause()"
+  (mouseleave)="resume()"
+  (focusin)="pause()"
+  (focusout)="resume()"
+>
+  <div class="carousel__shell">
+    @if (showControls()) {
+      <button
+        type="button"
+        class="carousel__nav carousel__nav--prev"
+        [attr.aria-label]="prevLabel()"
+        (click)="prev()"
+      >
+        <app-icon [name]="isVertical() ? 'chevron-up' : 'chevron-left'" />
+      </button>
+    }
+
+    <div #viewport class="carousel__viewport">
+      <div
+        class="carousel__track"
+        [style.transform]="trackTransform()"
+        [style.gap.px]="gapPx()"
+      >
+        <ng-content />
+      </div>
+    </div>
+
+    @if (showControls()) {
+      <button
+        type="button"
+        class="carousel__nav carousel__nav--next"
+        [attr.aria-label]="nextLabel()"
+        (click)="next()"
+      >
+        <app-icon [name]="isVertical() ? 'chevron-down' : 'chevron-right'" />
+      </button>
+    }
+  </div>
+
+  @if (showControls()) {
+    <div class="carousel__dots" role="tablist" [attr.aria-label]="'Navegação do carrossel'">
+      @for (dot of dots(); track dot) {
+        <button
+          type="button"
+          class="carousel__dot"
+          role="tab"
+          [class.is-active]="activeIndex() === dot"
+          [attr.aria-label]="'Ir para slide ' + (dot + 1)"
+          [attr.aria-selected]="activeIndex() === dot"
+          (click)="goTo(dot)"
+        ></button>
+      }
+    </div>
+  }
+</div>

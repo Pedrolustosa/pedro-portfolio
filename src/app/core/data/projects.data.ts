@@ -6,30 +6,17 @@ export const PROJECTS: Project[] = [
     slug: 'identityhub',
     category: 'Project',
     description:
-      'Projeto de gerenciamento de identidade e acesso.',
+      'Plataforma de Identity and Access Management (IAM) com painel administrativo para criar, editar e atribuir papéis a usuários de forma segura.',
     technologies: [
       '.NET 10',
       'ASP.NET Core',
       'Entity Framework Core',
       'Angular 18',
-      'Tailwind CSS'
+      'Tailwind CSS',
+      'JWT',
+      'SQLite'
     ],
     featured: true,
     githubUrl: 'https://github.com/Pedrolustosa/IdentityHub'
-  },
-  {
-    title: 'SignCraft',
-    slug: 'signcraft',
-    category: 'Project',
-    description:
-      'Projeto para criação de assinaturas profissionais de e-mail.',
-    technologies: [
-      '.NET 10',
-      'ASP.NET Core',
-      'Angular 20',
-      'SSR'
-    ],
-    featured: true,
-    githubUrl: 'https://github.com/Pedrolustosa/SignCraft'
   }
 ];
