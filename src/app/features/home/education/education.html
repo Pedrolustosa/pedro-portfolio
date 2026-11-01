@@ -16,7 +16,7 @@
           class="text-xs font-medium uppercase
                  tracking-[0.3em] text-zinc-400"
         >
-          06 — Formação
+          {{ 'education.eyebrow' | t }}
         </p>
 
         <h2
@@ -24,9 +24,9 @@
                  tracking-tight text-white
                  sm:text-4xl"
         >
-          Formação
+          {{ 'education.titleLead' | t }}
           <span class="text-zinc-400">
-            acadêmica.
+            {{ 'education.titleAccent' | t }}
           </span>
         </h2>
 
@@ -37,9 +37,7 @@
                leading-relaxed
                text-zinc-500"
       >
-        Formação construída entre tecnologia,
-        desenvolvimento de software, dados e
-        inteligência artificial.
+        {{ 'education.intro' | t }}
       </p>
 
     </div>
@@ -47,14 +45,14 @@
 
     <div class="mt-16">
       <app-carousel
-        ariaLabel="Formação acadêmica"
+        [ariaLabel]="'education.aria' | t"
         [perView]="[1, 2, 2]"
         [intervalMs]="7500"
         [durationMs]="900"
       >
         @for (
           item of education;
-          track item.title
+          track item.institution + item.start.pt
         ) {
           <article
             appCarouselSlide
@@ -84,14 +82,14 @@
                        tracking-wider
                        text-zinc-500"
               >
-                {{ item.type }}
+                {{ item.type | localize }}
               </span>
 
               <span
                 class="font-mono text-xs
                        text-zinc-400"
               >
-                {{ item.start }} — {{ item.end }}
+                {{ item.start | localize }} — {{ item.end | localize }}
               </span>
 
             </div>
@@ -103,7 +101,7 @@
                      leading-relaxed
                      text-white"
             >
-              {{ item.title }}
+              {{ item.title | localize }}
             </h3>
 
 
@@ -120,7 +118,7 @@
               class="mt-1 text-xs
                      text-zinc-400"
             >
-              {{ item.location }}
+              {{ item.location | localize }}
             </p>
 
 

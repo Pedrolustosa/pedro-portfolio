@@ -16,7 +16,7 @@
           class="text-xs font-medium uppercase
                  tracking-[0.3em] text-zinc-400"
         >
-          02 — Stack
+          {{ 'skills.eyebrow' | t }}
         </p>
 
         <h2
@@ -24,9 +24,9 @@
                  tracking-tight text-white
                  sm:text-4xl"
         >
-          Tecnologias
+          {{ 'skills.titleLead' | t }}
           <span class="text-zinc-400">
-            que utilizo.
+            {{ 'skills.titleAccent' | t }}
           </span>
         </h2>
 
@@ -36,9 +36,7 @@
         class="max-w-md text-sm leading-relaxed
                text-zinc-500"
       >
-        Uma stack construída ao longo de
-        diferentes projetos, contextos e
-        desafios de engenharia.
+        {{ 'skills.intro' | t }}
       </p>
 
     </div>
@@ -46,7 +44,7 @@
 
     <div class="mt-16">
       <app-carousel
-        ariaLabel="Stack tecnológica"
+        [ariaLabel]="'skills.aria' | t"
         [perView]="[1, 2, 3]"
         [intervalMs]="7500"
         [durationMs]="900"
@@ -105,7 +103,7 @@
                      leading-relaxed
                      text-zinc-500"
             >
-              {{ group.description }}
+              {{ group.description | localize }}
             </p>
 
 

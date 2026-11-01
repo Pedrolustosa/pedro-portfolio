@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Icon } from '../../icon/icon';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-footer',
-  imports: [Icon],
+  imports: [Icon, TranslatePipe],
   templateUrl: './footer.html',
   styleUrl: './footer.css'
 })

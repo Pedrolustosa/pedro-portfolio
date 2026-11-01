@@ -16,7 +16,7 @@
           class="text-xs font-medium uppercase
                  tracking-[0.3em] text-zinc-400"
         >
-          04 — Experiência
+          {{ 'experience.eyebrow' | t }}
         </p>
 
         <h2
@@ -24,9 +24,9 @@
                  tracking-tight text-white
                  sm:text-4xl"
         >
-          Experiência
+          {{ 'experience.titleLead' | t }}
           <span class="text-zinc-400">
-            profissional.
+            {{ 'experience.titleAccent' | t }}
           </span>
         </h2>
 
@@ -35,9 +35,7 @@
                  text-sm leading-relaxed
                  text-zinc-500"
         >
-          Uma trajetória construída através de
-          diferentes ambientes, tecnologias e
-          desafios de engenharia de software.
+          {{ 'experience.intro' | t }}
         </p>
 
       </div>
@@ -53,7 +51,7 @@
         ></div>
 
         <app-carousel
-          ariaLabel="Experiência profissional"
+          [ariaLabel]="'experience.aria' | t"
           orientation="vertical"
           autoplayDirection="forward"
           [perView]="[1, 2, 2]"
@@ -105,7 +103,7 @@
                            tracking-wider
                            text-zinc-500"
                   >
-                    {{ experience.start }}
+                    {{ experience.start | localize }}
                   </span>
 
                   <span class="text-zinc-800">—</span>
@@ -116,7 +114,7 @@
                            tracking-wider
                            text-zinc-500"
                   >
-                    {{ experience.end }}
+                    {{ experience.end | localize }}
                   </span>
 
                 </div>
@@ -137,7 +135,7 @@
                          font-medium
                          text-zinc-400"
                 >
-                  {{ experience.role }}
+                  {{ experience.role | localize }}
                 </p>
 
 
@@ -146,7 +144,7 @@
                          text-xs leading-relaxed
                          text-zinc-500"
                 >
-                  {{ experience.description }}
+                  {{ experience.description | localize }}
                 </p>
 
 

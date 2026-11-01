@@ -2,7 +2,7 @@
   class="carousel"
   [class.carousel--vertical]="isVertical()"
   role="region"
-  [attr.aria-label]="ariaLabel()"
+  [attr.aria-label]="resolvedAriaLabel()"
   [attr.aria-roledescription]="'carousel'"
   (mouseenter)="pause()"
   (mouseleave)="resume()"
@@ -44,14 +44,14 @@
   </div>
 
   @if (showControls()) {
-    <div class="carousel__dots" role="tablist" [attr.aria-label]="'Navegação do carrossel'">
+    <div class="carousel__dots" role="tablist" [attr.aria-label]="'carousel.nav' | t">
       @for (dot of dots(); track dot) {
         <button
           type="button"
           class="carousel__dot"
           role="tab"
           [class.is-active]="activeIndex() === dot"
-          [attr.aria-label]="'Ir para slide ' + (dot + 1)"
+          [attr.aria-label]="('carousel.goTo' | t) + ' ' + (dot + 1)"
           [attr.aria-selected]="activeIndex() === dot"
           (click)="goTo(dot)"
         ></button>

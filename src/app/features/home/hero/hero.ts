@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Icon } from '../../../shared/icon/icon';
+import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
 
 interface HeroTechnology {
   label: string;
@@ -9,7 +10,7 @@ interface HeroTechnology {
 
 @Component({
   selector: 'app-hero',
-  imports: [Icon],
+  imports: [Icon, TranslatePipe],
   templateUrl: './hero.html',
   styleUrl: './hero.css'
 })

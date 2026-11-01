@@ -1,8 +1,10 @@
+import { LocalizedString } from '../i18n/locale';
+
 export interface Experience {
   company: string;
-  role: string;
-  start: string;
-  end: string;
-  description: string;
+  role: LocalizedString;
+  start: LocalizedString;
+  end: LocalizedString;
+  description: LocalizedString;
   technologies: string[];
 }

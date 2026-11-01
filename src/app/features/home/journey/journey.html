@@ -11,7 +11,7 @@
         class="text-xs font-medium uppercase
                tracking-[0.3em] text-zinc-400"
       >
-        05 — Jornada
+        {{ 'journey.eyebrow' | t }}
       </p>
 
       <h2
@@ -19,9 +19,9 @@
                tracking-tight text-white
                sm:text-4xl"
       >
-        Uma trajetória em
+        {{ 'journey.titleLead' | t }}
         <span class="text-zinc-400">
-          constante evolução.
+          {{ 'journey.titleAccent' | t }}
         </span>
       </h2>
 
@@ -29,10 +29,7 @@
         class="mt-6 text-sm leading-relaxed
                text-zinc-500"
       >
-        Da infraestrutura ao desenvolvimento de
-        software, passando por dados, arquitetura,
-        cloud e IA generativa com integrações às
-        principais APIs do mercado.
+        {{ 'journey.intro' | t }}
       </p>
 
     </div>
@@ -90,7 +87,7 @@
                      font-semibold
                      text-white"
             >
-              {{ step.title }}
+              {{ step.title | localize }}
             </h3>
 
 
@@ -99,7 +96,7 @@
                      leading-relaxed
                      text-zinc-500"
             >
-              {{ step.description }}
+              {{ step.description | localize }}
             </p>
 
           </article>

@@ -1,23 +1,25 @@
+import { LocalizedString } from '../i18n/locale';
+
 export interface ProjectCase {
   slug: string;
   title: string;
   category: string;
-  summary: string;
-  description: string;
+  summary: LocalizedString;
+  description: LocalizedString;
 
-  problem: string;
-  solution: string;
+  problem: LocalizedString;
+  solution: LocalizedString;
 
   technologies: string[];
 
-  architecture: string[];
+  architecture: LocalizedString[];
 
   decisions: {
-    title: string;
-    description: string;
+    title: LocalizedString;
+    description: LocalizedString;
   }[];
 
-  status: string;
+  status: LocalizedString;
 
   githubUrl?: string;
   demoUrl?: string;
