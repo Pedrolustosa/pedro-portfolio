@@ -40,16 +40,29 @@
   <script>
     (function () {
       try {
-        var key = 'pedro-portfolio-theme';
-        var stored = localStorage.getItem(key);
+        var themeKey = 'pedro-portfolio-theme';
+        var storedTheme = localStorage.getItem(themeKey);
         var theme =
-          stored === 'light' || stored === 'dark'
-            ? stored
+          storedTheme === 'light' || storedTheme === 'dark'
+            ? storedTheme
             : window.matchMedia('(prefers-color-scheme: light)').matches
               ? 'light'
               : 'dark';
         document.documentElement.setAttribute('data-theme', theme);
         document.documentElement.style.colorScheme = theme;
+
+        var localeKey = 'pedro-portfolio-locale';
+        var storedLocale = localStorage.getItem(localeKey);
+        var locale =
+          storedLocale === 'pt' || storedLocale === 'en'
+            ? storedLocale
+            : (navigator.language || '').toLowerCase().indexOf('en') === 0
+              ? 'en'
+              : 'pt';
+        document.documentElement.setAttribute(
+          'lang',
+          locale === 'pt' ? 'pt-BR' : 'en'
+        );
       } catch (e) {}
     })();
   </script>

@@ -1,8 +1,10 @@
+import { LocalizedString } from '../i18n/locale';
+
 export interface Certification {
-  title: string;
+  title: LocalizedString | string;
   issuer: string;
   category: string;
   image?: string;
-  date?: string;
+  date?: LocalizedString;
   credentialId?: string;
 }

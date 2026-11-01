@@ -13,11 +13,13 @@ import {
 import { filter } from 'rxjs';
 
 import { ThemeService } from '../../../core/services/theme.service';
+import { LanguageService } from '../../../core/services/language.service';
 import { Icon } from '../../icon/icon';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-navbar',
-  imports: [Icon],
+  imports: [Icon, TranslatePipe],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
@@ -29,6 +31,7 @@ export class Navbar {
   private readonly router = inject(Router);
 
   protected readonly themeService = inject(ThemeService);
+  protected readonly language = inject(LanguageService);
 
   constructor() {
     this.setupRouterListener();
@@ -67,6 +70,10 @@ export class Navbar {
 
   protected toggleTheme(): void {
     this.themeService.toggle();
+  }
+
+  protected toggleLanguage(): void {
+    this.language.toggle();
   }
 
   private setupRouterListener(): void {

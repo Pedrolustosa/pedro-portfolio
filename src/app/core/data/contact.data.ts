@@ -1,3 +1,4 @@
+import { L } from '../i18n/locale';
 import { ContactLink } from '../models/contact.model';
 
 export const CONTACT_LINKS: ContactLink[] = [
@@ -22,8 +23,8 @@ export const CONTACT_LINKS: ContactLink[] = [
     external: true
   },
   {
-    label: 'Currículo',
-    value: 'Baixar PDF',
+    label: L('Currículo', 'Resume'),
+    value: L('Baixar PDF', 'Download PDF'),
     url: '/Pedro-Lustosa-Curriculo.pdf',
     icon: 'download',
     download: true

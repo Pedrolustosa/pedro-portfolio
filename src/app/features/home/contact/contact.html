@@ -40,7 +40,7 @@
                  tracking-[0.3em]
                  text-blue-400/70"
         >
-          08 — Contato
+          {{ 'contact.eyebrow' | t }}
         </p>
 
 
@@ -54,10 +54,10 @@
                  sm:text-5xl
                  lg:text-6xl"
         >
-          Vamos construir algo
+          {{ 'contact.titleLead' | t }}
 
           <span class="brand-accent">
-            juntos?
+            {{ 'contact.titleAccent' | t }}
           </span>
         </h2>
 
@@ -70,9 +70,7 @@
                  text-slate-400
                  sm:text-lg"
         >
-          Estou aberto a conversar sobre projetos,
-          oportunidades e ideias relacionadas a
-          tecnologia e engenharia de software.
+          {{ 'contact.intro' | t }}
         </p>
 
 
@@ -87,7 +85,7 @@
 
           @for (
             contact of contactLinks;
-            track contact.label
+            track contact.url
           ) {
 
             <a
@@ -141,7 +139,7 @@
                          duration-200
                          group-hover:text-blue-200"
                 >
-                  {{ contact.label }}
+                  {{ contact.label | localize }}
                 </span>
 
               </span>

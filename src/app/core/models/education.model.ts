@@ -1,8 +1,10 @@
+import { LocalizedString } from '../i18n/locale';
+
 export interface Education {
-  title: string;
+  title: LocalizedString;
   institution: string;
-  location: string;
-  start: string;
-  end: string;
-  type: string;
+  location: LocalizedString;
+  start: LocalizedString;
+  end: LocalizedString;
+  type: LocalizedString;
 }

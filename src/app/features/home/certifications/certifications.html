@@ -17,7 +17,7 @@
           class="text-xs font-medium uppercase
                  tracking-[0.3em] text-zinc-400"
         >
-          07 — Certificações
+          {{ 'certs.eyebrow' | t }}
         </p>
 
         <h2
@@ -25,9 +25,9 @@
                  tracking-tight text-white
                  sm:text-4xl"
         >
-          Certificações
+          {{ 'certs.titleLead' | t }}
           <span class="text-zinc-400">
-            profissionais.
+            {{ 'certs.titleAccent' | t }}
           </span>
         </h2>
 
@@ -38,8 +38,7 @@
                leading-relaxed
                text-zinc-500"
       >
-        Certificações e cursos que complementam
-        minha formação técnica e profissional.
+        {{ 'certs.intro' | t }}
       </p>
 
     </div>
@@ -70,7 +69,7 @@
           [class.hover:border-zinc-600]="selectedCategory !== category"
           [class.hover:text-white]="selectedCategory !== category"
         >
-          {{ category }}
+          {{ category === 'all' ? ('certs.filterAll' | t) : category }}
         </button>
 
       }
@@ -82,7 +81,7 @@
       @if (filteredCertifications.length > 0) {
         @for (_ of [carouselKey]; track _) {
           <app-carousel
-            ariaLabel="Certificações profissionais"
+            [ariaLabel]="'certs.aria' | t"
             [perView]="[1, 2, 3]"
             [intervalMs]="7500"
             [durationMs]="950"
@@ -90,7 +89,7 @@
           >
             @for (
               certification of filteredCertifications;
-              track certification.title
+              track certification.credentialId || $index
             ) {
               <article
                 appCarouselSlide
@@ -112,11 +111,11 @@
                            w-full shrink-0 overflow-hidden
                            border-b border-zinc-800
                            bg-zinc-900"
-                    [attr.aria-label]="'Abrir certificado: ' + certification.title"
+                    [attr.aria-label]="('certs.openAria' | t) + ' ' + (certification.title | localize)"
                   >
                     <img
                       [src]="certification.image"
-                      [alt]="certification.title"
+                      [alt]="certification.title | localize"
                       loading="lazy"
                       class="absolute inset-0 h-full w-full
                              object-cover object-top
@@ -154,7 +153,7 @@
 
                     @if (certification.date) {
                       <span class="shrink-0 font-mono text-[10px] text-zinc-600">
-                        {{ certification.date }}
+                        {{ certification.date | localize }}
                       </span>
                     }
                   </div>
@@ -163,7 +162,7 @@
                     class="mt-2 line-clamp-2 text-xs font-semibold
                            leading-snug text-white sm:text-sm"
                   >
-                    {{ certification.title }}
+                    {{ certification.title | localize }}
                   </h3>
 
                   <p class="mt-2 text-[11px] text-zinc-400">

@@ -18,10 +18,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { CarouselSlideDirective } from './carousel-slide.directive';
 import { Icon } from '../../icon/icon';
+import { LanguageService } from '../../../core/services/language.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-carousel',
-  imports: [Icon],
+  imports: [Icon, TranslatePipe],
   templateUrl: './carousel.html',
   styleUrl: './carousel.css',
   host: {
@@ -33,7 +35,7 @@ export class Carousel implements AfterContentInit, AfterViewInit, OnDestroy {
   readonly autoplay = input(true);
   readonly intervalMs = input(7500);
   readonly durationMs = input(900);
-  readonly ariaLabel = input('Carrossel');
+  readonly ariaLabel = input('');
   /** horizontal | vertical */
   readonly orientation = input<'horizontal' | 'vertical'>('horizontal');
   /**
@@ -78,13 +80,26 @@ export class Carousel implements AfterContentInit, AfterViewInit, OnDestroy {
       : `translateX(-${offset}px)`;
   });
 
-  protected readonly prevLabel = computed(() =>
-    this.isVertical() ? 'Experiência anterior' : 'Slide anterior'
-  );
+  private readonly language = inject(LanguageService);
 
-  protected readonly nextLabel = computed(() =>
-    this.isVertical() ? 'Próxima experiência' : 'Próximo slide'
-  );
+  protected readonly resolvedAriaLabel = computed(() => {
+    this.language.locale();
+    return this.ariaLabel() || this.language.t('carousel.default');
+  });
+
+  protected readonly prevLabel = computed(() => {
+    this.language.locale();
+    return this.isVertical()
+      ? this.language.t('carousel.prevExperience')
+      : this.language.t('carousel.prev');
+  });
+
+  protected readonly nextLabel = computed(() => {
+    this.language.locale();
+    return this.isVertical()
+      ? this.language.t('carousel.nextExperience')
+      : this.language.t('carousel.next');
+  });
 
   private readonly destroyRef = inject(DestroyRef);
   private timerId?: ReturnType<typeof setInterval>;

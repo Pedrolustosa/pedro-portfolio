@@ -7,10 +7,21 @@ import { ProjectCase } from '../../core/models/project-case.model';
 import { ScrollRevealDirective } from '../../shared/directives/scroll-reveal.directive';
 import { Carousel } from '../../shared/components/carousel/carousel';
 import { CarouselSlideDirective } from '../../shared/components/carousel/carousel-slide.directive';
+import {
+  LocalizePipe,
+  TranslatePipe
+} from '../../shared/pipes/translate.pipe';
 
 @Component({
   selector: 'app-projects',
-  imports: [RouterLink, ScrollRevealDirective, Carousel, CarouselSlideDirective],
+  imports: [
+    RouterLink,
+    ScrollRevealDirective,
+    Carousel,
+    CarouselSlideDirective,
+    TranslatePipe,
+    LocalizePipe
+  ],
   templateUrl: './projects.html',
   styleUrl: './projects.css'
 })
