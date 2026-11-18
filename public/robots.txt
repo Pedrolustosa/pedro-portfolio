@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pedro-portfolio-blue.vercel.app/sitemap.xml

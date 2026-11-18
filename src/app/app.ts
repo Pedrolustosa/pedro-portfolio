@@ -1,12 +1,16 @@
-import { ViewportScroller } from '@angular/common';
+import { DOCUMENT, ViewportScroller } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
 
 import { ThemeService } from './core/services/theme.service';
 import { LanguageService } from './core/services/language.service';
 import { Navbar } from './shared/components/navbar/navbar';
 import { Footer } from './shared/components/footer/footer';
 import { TranslatePipe } from './shared/pipes/translate.pipe';
+
+/** Production origin used for canonical and Open Graph URLs. */
+const SITE_URL = 'https://pedro-portfolio-blue.vercel.app';
 
 /** Must match `scroll-margin-top` on sections in styles.css. */
 const SECTION_SCROLL_OFFSET = 100;
@@ -32,9 +36,22 @@ export class App {
 
   private readonly router = inject(Router);
   private readonly viewportScroller = inject(ViewportScroller);
+  private readonly document = inject(DOCUMENT);
 
   constructor() {
     this.viewportScroller.setOffset([0, SECTION_SCROLL_OFFSET]);
+
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe(event => this.updateCanonicalUrl(event.urlAfterRedirects));
+  }
+
+  private updateCanonicalUrl(url: string): void {
+    const path = url.split(/[?#]/)[0];
+    const href = SITE_URL + (path === '/' ? '/' : path);
+
+    this.document.querySelector('link[rel="canonical"]')?.setAttribute('href', href);
+    this.document.querySelector('meta[property="og:url"]')?.setAttribute('content', href);
   }
 
   /**
