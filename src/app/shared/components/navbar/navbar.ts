@@ -16,6 +16,7 @@ import { filter } from 'rxjs';
 import { ThemeService } from '../../../core/services/theme.service';
 import { LanguageService } from '../../../core/services/language.service';
 import { Icon } from '../../icon/icon';
+import { goHomeTop } from '../../utils/go-home';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
@@ -45,15 +46,7 @@ export class Navbar {
   protected onBrandClick(event: Event): void {
     event.preventDefault();
     this.closeMenu();
-
-    if (this.router.url.startsWith('/projects')) {
-      this.router.navigateByUrl('/').then(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-      return;
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    goHomeTop(this.router);
   }
 
   @HostListener('window:scroll')
