@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 
 import { CERTIFICATIONS } from '../../../core/data/certifications.data';
 import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.directive';
@@ -36,25 +36,26 @@ export class Certifications {
     'Security & Compliance'
   ];
 
-  protected selectedCategory = ALL_CATEGORY;
+  protected readonly selectedCategory = signal(ALL_CATEGORY);
 
   /** Force carousel remount when filter changes */
-  protected carouselKey = 0;
+  protected readonly carouselKey = signal(0);
 
-  protected get filteredCertifications() {
-    if (this.selectedCategory === ALL_CATEGORY) {
+  protected readonly filteredCertifications = computed(() => {
+    const category = this.selectedCategory();
+
+    if (category === ALL_CATEGORY) {
       return this.certifications;
     }
 
     return this.certifications.filter(
-      certification =>
-        certification.category === this.selectedCategory
+      certification => certification.category === category
     );
-  }
+  });
 
   protected selectCategory(category: string): void {
-    this.selectedCategory = category;
-    this.carouselKey += 1;
+    this.selectedCategory.set(category);
+    this.carouselKey.update(key => key + 1);
   }
 
 }

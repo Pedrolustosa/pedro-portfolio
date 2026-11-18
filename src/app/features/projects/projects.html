@@ -229,6 +229,19 @@
 
                     }
 
+                    @if (project.demoUrl) {
+
+                      <a
+                        [href]="project.demoUrl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-secondary"
+                      >
+                        {{ 'projects.demo' | t }}
+                      </a>
+
+                    }
+
                   </div>
 
                 </div>
@@ -725,7 +738,7 @@
                 rel="noopener noreferrer"
                 class="btn-secondary"
               >
-                Live Demo
+                {{ 'projects.demo' | t }}
               </a>
 
             }

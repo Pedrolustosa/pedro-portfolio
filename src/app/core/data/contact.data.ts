@@ -1,6 +1,11 @@
 import { L } from '../i18n/locale';
 import { ContactLink } from '../models/contact.model';
 
+export const RESUME_URL = L(
+  '/Curriculo_Pedro_Lustosa.pdf',
+  '/Resume_Pedro_Lustosa.pdf'
+);
+
 export const CONTACT_LINKS: ContactLink[] = [
   {
     label: 'E-mail',
@@ -25,7 +30,7 @@ export const CONTACT_LINKS: ContactLink[] = [
   {
     label: L('Currículo', 'Resume'),
     value: L('Baixar PDF', 'Download PDF'),
-    url: '/Pedro-Lustosa-Curriculo.pdf',
+    url: RESUME_URL,
     icon: 'download',
     download: true
   }

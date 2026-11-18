@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 import { PROJECTS } from '../../core/data/projects.data';
 import { PROJECT_CASES } from '../../core/data/project-cases.data';
@@ -30,13 +30,17 @@ export class Projects {
 
   protected readonly selectedProject: ProjectCase | undefined;
 
-  constructor(
-    private readonly route: ActivatedRoute
-  ) {
-    const slug = this.route.snapshot.paramMap.get('slug');
+  constructor() {
+    const slug = inject(ActivatedRoute).snapshot.paramMap.get('slug');
 
     this.selectedProject = slug
       ? PROJECT_CASES.find(project => project.slug === slug)
       : undefined;
+
+    // Unknown case slug: send the visitor to the projects section instead of
+    // rendering the project list as if it were a standalone page.
+    if (slug && !this.selectedProject) {
+      inject(Router).navigate(['/'], { fragment: 'projects', replaceUrl: true });
+    }
   }
 }

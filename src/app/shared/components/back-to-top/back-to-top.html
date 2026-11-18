@@ -1,0 +1,11 @@
+<button
+  type="button"
+  class="back-to-top"
+  [class.is-visible]="isVisible()"
+  [attr.inert]="isVisible() ? null : ''"
+  [attr.aria-label]="'backToTop' | t"
+  [attr.title]="'backToTop' | t"
+  (click)="scrollToTop()"
+>
+  <app-icon name="chevron-up" />
+</button>

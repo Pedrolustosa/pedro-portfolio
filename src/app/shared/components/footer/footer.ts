@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Icon } from '../../icon/icon';
+import { goHomeTop } from '../../utils/go-home';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
@@ -18,15 +19,7 @@ export class Footer {
 
   protected onBrandClick(event: Event): void {
     event.preventDefault();
-
-    if (this.router.url.startsWith('/projects')) {
-      this.router.navigateByUrl('/').then(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-      return;
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    goHomeTop(this.router);
   }
 
 }

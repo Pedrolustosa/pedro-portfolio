@@ -1,6 +1,7 @@
 import {
   Component,
   HostListener,
+  afterNextRender,
   inject,
   signal
 } from '@angular/core';
@@ -15,6 +16,7 @@ import { filter } from 'rxjs';
 import { ThemeService } from '../../../core/services/theme.service';
 import { LanguageService } from '../../../core/services/language.service';
 import { Icon } from '../../icon/icon';
+import { goHomeTop } from '../../utils/go-home';
 import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
@@ -36,7 +38,7 @@ export class Navbar {
   constructor() {
     this.setupRouterListener();
 
-    setTimeout(() => {
+    afterNextRender(() => {
       this.updateActiveSection();
     });
   }
@@ -44,20 +46,22 @@ export class Navbar {
   protected onBrandClick(event: Event): void {
     event.preventDefault();
     this.closeMenu();
-
-    if (this.router.url.startsWith('/projects')) {
-      this.router.navigateByUrl('/').then(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-      return;
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    goHomeTop(this.router);
   }
+
+  private scrollFrame?: number;
 
   @HostListener('window:scroll')
   protected onWindowScroll(): void {
-    this.updateActiveSection();
+    // Scroll fires many times per frame; measure layout at most once per frame.
+    if (this.scrollFrame !== undefined) {
+      return;
+    }
+
+    this.scrollFrame = requestAnimationFrame(() => {
+      this.scrollFrame = undefined;
+      this.updateActiveSection();
+    });
   }
 
   protected toggleMenu(): void {
@@ -106,6 +110,10 @@ export class Navbar {
   }
 
   private updateActiveSection(): void {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
     const sections =
       Array.from(
         document.querySelectorAll<HTMLElement>(
