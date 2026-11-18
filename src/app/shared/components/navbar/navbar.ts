@@ -49,9 +49,19 @@ export class Navbar {
     goHomeTop(this.router);
   }
 
+  private scrollFrame?: number;
+
   @HostListener('window:scroll')
   protected onWindowScroll(): void {
-    this.updateActiveSection();
+    // Scroll fires many times per frame; measure layout at most once per frame.
+    if (this.scrollFrame !== undefined) {
+      return;
+    }
+
+    this.scrollFrame = requestAnimationFrame(() => {
+      this.scrollFrame = undefined;
+      this.updateActiveSection();
+    });
   }
 
   protected toggleMenu(): void {
