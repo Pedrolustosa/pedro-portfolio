@@ -7,6 +7,7 @@ import { ThemeService } from './core/services/theme.service';
 import { LanguageService } from './core/services/language.service';
 import { Navbar } from './shared/components/navbar/navbar';
 import { Footer } from './shared/components/footer/footer';
+import { BackToTop } from './shared/components/back-to-top/back-to-top';
 import { TranslatePipe } from './shared/pipes/translate.pipe';
 
 /** Production origin used for canonical and Open Graph URLs. */
@@ -21,6 +22,7 @@ const SECTION_SCROLL_OFFSET = 100;
     RouterOutlet,
     Navbar,
     Footer,
+    BackToTop,
     TranslatePipe
   ],
   templateUrl: './app.html',

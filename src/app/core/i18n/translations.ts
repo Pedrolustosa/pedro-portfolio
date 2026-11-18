@@ -43,6 +43,8 @@ export const TRANSLATIONS = {
     en: 'All rights reserved.'
   },
 
+  backToTop: { pt: 'Voltar ao topo', en: 'Back to top' },
+
   'carousel.default': { pt: 'Carrossel', en: 'Carousel' },
   'carousel.prev': { pt: 'Slide anterior', en: 'Previous slide' },
   'carousel.next': { pt: 'Próximo slide', en: 'Next slide' },
