@@ -186,8 +186,8 @@
 
 
           <a
-            href="/Pedro-Lustosa-Curriculo.pdf"
-            download="Pedro-Lustosa-Curriculo.pdf"
+            [href]="resumeUrl | localize"
+            [attr.download]="(resumeUrl | localize).slice(1)"
             class="btn-secondary"
           >
             {{ 'hero.ctaResume' | t }}

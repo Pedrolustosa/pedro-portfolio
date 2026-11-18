@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
 
+import { RESUME_URL } from '../../../core/data/contact.data';
 import { Icon } from '../../../shared/icon/icon';
-import { TranslatePipe } from '../../../shared/pipes/translate.pipe';
+import {
+  LocalizePipe,
+  TranslatePipe
+} from '../../../shared/pipes/translate.pipe';
 
 interface HeroTechnology {
   label: string;
@@ -10,11 +14,13 @@ interface HeroTechnology {
 
 @Component({
   selector: 'app-hero',
-  imports: [Icon, TranslatePipe],
+  imports: [Icon, TranslatePipe, LocalizePipe],
   templateUrl: './hero.html',
   styleUrl: './hero.css'
 })
 export class Hero {
+  protected readonly resumeUrl = RESUME_URL;
+
   protected readonly technologies: HeroTechnology[] = [
     { label: 'C#', icon: 'csharp' },
     { label: '.NET', icon: 'dotnet' },

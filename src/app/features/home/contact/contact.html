@@ -85,11 +85,11 @@
 
           @for (
             contact of contactLinks;
-            track contact.url
+            track contact.icon
           ) {
 
             <a
-              [href]="contact.url"
+              [href]="contact.url | localize"
               [target]="
                 contact.external
                   ? '_blank'
@@ -102,7 +102,7 @@
               "
               [attr.download]="
                 contact.download
-                  ? 'Pedro-Lustosa-Curriculo.pdf'
+                  ? (contact.url | localize).slice(1)
                   : null
               "
               class="group flex
