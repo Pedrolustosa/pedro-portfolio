@@ -127,11 +127,12 @@ export const TRANSLATIONS = {
     en: 'ideas into software.'
   },
   'projects.intro': {
-    pt: 'Projeto em destaque no GitHub, usado para aplicar arquitetura, segurança e conceitos de engenharia de software em um produto real.',
-    en: 'A featured GitHub project used to apply architecture, security, and software engineering concepts in a real product.'
+    pt: 'Projetos open source no GitHub, usados para aplicar arquitetura, segurança e boas práticas de engenharia de software em produtos reais.',
+    en: 'Open-source GitHub projects used to apply architecture, security, and software engineering best practices in real products.'
   },
   'projects.aria': { pt: 'Projetos em destaque', en: 'Featured projects' },
   'projects.viewCase': { pt: 'Ver Case Study', en: 'View case study' },
+  'projects.demo': { pt: 'Ver demo', en: 'Live demo' },
   'projects.back': { pt: 'Voltar para projetos', en: 'Back to projects' },
   'projects.overview': { pt: 'Sobre o projeto', en: 'About the project' },
   'projects.problemEyebrow': { pt: '01 — Problema', en: '01 — Problem' },

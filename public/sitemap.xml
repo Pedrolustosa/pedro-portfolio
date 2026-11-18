@@ -4,6 +4,12 @@
     <loc>https://pedro-portfolio-blue.vercel.app/</loc>
   </url>
   <url>
+    <loc>https://pedro-portfolio-blue.vercel.app/projects/inventory-order-management</loc>
+  </url>
+  <url>
     <loc>https://pedro-portfolio-blue.vercel.app/projects/identityhub</loc>
+  </url>
+  <url>
+    <loc>https://pedro-portfolio-blue.vercel.app/projects/timetrack-lite</loc>
   </url>
 </urlset>
