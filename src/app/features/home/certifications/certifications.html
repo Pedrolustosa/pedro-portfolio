@@ -60,14 +60,14 @@
                  border px-4 py-2
                  text-xs font-medium
                  transition-all"
-          [class.border-white]="selectedCategory === category"
-          [class.bg-white]="selectedCategory === category"
-          [class.text-black]="selectedCategory === category"
-          [class.border-zinc-800]="selectedCategory !== category"
-          [class.bg-zinc-950]="selectedCategory !== category"
-          [class.text-zinc-500]="selectedCategory !== category"
-          [class.hover:border-zinc-600]="selectedCategory !== category"
-          [class.hover:text-white]="selectedCategory !== category"
+          [class.border-white]="selectedCategory() === category"
+          [class.bg-white]="selectedCategory() === category"
+          [class.text-black]="selectedCategory() === category"
+          [class.border-zinc-800]="selectedCategory() !== category"
+          [class.bg-zinc-950]="selectedCategory() !== category"
+          [class.text-zinc-500]="selectedCategory() !== category"
+          [class.hover:border-zinc-600]="selectedCategory() !== category"
+          [class.hover:text-white]="selectedCategory() !== category"
         >
           {{ category === 'all' ? ('certs.filterAll' | t) : category }}
         </button>
@@ -78,8 +78,8 @@
 
 
     <div class="mt-10">
-      @if (filteredCertifications.length > 0) {
-        @for (_ of [carouselKey]; track _) {
+      @if (filteredCertifications().length > 0) {
+        @for (_ of [carouselKey()]; track _) {
           <app-carousel
             [ariaLabel]="'certs.aria' | t"
             [perView]="[1, 2, 3]"
@@ -88,7 +88,7 @@
             [gapPx]="14"
           >
             @for (
-              certification of filteredCertifications;
+              certification of filteredCertifications();
               track certification.credentialId || $index
             ) {
               <article
