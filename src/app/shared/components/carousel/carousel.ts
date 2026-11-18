@@ -8,12 +8,14 @@ import {
   HostListener,
   OnDestroy,
   QueryList,
+  PLATFORM_ID,
   ViewChild,
   computed,
   inject,
   input,
   signal
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { CarouselSlideDirective } from './carousel-slide.directive';
@@ -102,6 +104,7 @@ export class Carousel implements AfterContentInit, AfterViewInit, OnDestroy {
   });
 
   private readonly destroyRef = inject(DestroyRef);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   private timerId?: ReturnType<typeof setInterval>;
   private resizeObserver?: ResizeObserver;
 
@@ -110,12 +113,21 @@ export class Carousel implements AfterContentInit, AfterViewInit, OnDestroy {
 
     this.slides.changes.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
       this.updateSlideCount();
+
+      if (!this.isBrowser) {
+        return;
+      }
+
       this.layout();
       this.restartAutoplay();
     });
   }
 
   ngAfterViewInit(): void {
+    if (!this.isBrowser) {
+      return;
+    }
+
     this.layout();
 
     this.resizeObserver = new ResizeObserver(() => this.layout());
@@ -226,6 +238,7 @@ export class Carousel implements AfterContentInit, AfterViewInit, OnDestroy {
     this.stopAutoplay();
 
     if (
+      !this.isBrowser ||
       !this.autoplay() ||
       this.isPaused() ||
       !this.showControls() ||

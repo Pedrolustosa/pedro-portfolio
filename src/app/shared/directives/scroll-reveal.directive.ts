@@ -1,19 +1,28 @@
 import {
-  AfterViewInit,
   Directive,
   ElementRef,
-  OnDestroy
+  OnDestroy,
+  afterNextRender,
+  inject
 } from '@angular/core';
 
 @Directive({
   selector: '[appScrollReveal]'
 })
-export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
+export class ScrollRevealDirective implements OnDestroy {
+  private readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
   private observer?: IntersectionObserver;
 
-  constructor(private readonly elementRef: ElementRef<HTMLElement>) {}
+  constructor() {
+    // Browser-only: prerendered HTML keeps content visible for crawlers.
+    afterNextRender(() => this.observe());
+  }
 
-  ngAfterViewInit(): void {
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
+  }
+
+  private observe(): void {
     const element = this.elementRef.nativeElement;
 
     element.classList.add('scroll-reveal');
@@ -31,9 +40,5 @@ export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
     );
 
     this.observer.observe(element);
-  }
-
-  ngOnDestroy(): void {
-    this.observer?.disconnect();
   }
 }

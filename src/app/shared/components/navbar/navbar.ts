@@ -1,6 +1,7 @@
 import {
   Component,
   HostListener,
+  afterNextRender,
   inject,
   signal
 } from '@angular/core';
@@ -36,7 +37,7 @@ export class Navbar {
   constructor() {
     this.setupRouterListener();
 
-    setTimeout(() => {
+    afterNextRender(() => {
       this.updateActiveSection();
     });
   }
@@ -106,6 +107,10 @@ export class Navbar {
   }
 
   private updateActiveSection(): void {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
     const sections =
       Array.from(
         document.querySelectorAll<HTMLElement>(
